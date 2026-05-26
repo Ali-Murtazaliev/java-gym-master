@@ -28,9 +28,9 @@ public class Timetable {
         return timetable.getOrDefault(dayOfWeek, new TreeMap<>()).getOrDefault(timeOfDay, new ArrayList<>());
     }
 
-    public List<CounterOfTrainings> getCountByCoaches () {
+    public List<CounterOfTrainings> getCountByCoaches() {
         Map<Coach, Integer> lessonsCount = new HashMap<>();
-        for(TreeMap<TimeOfDay, List<TrainingSession>> day : timetable.values()) {
+        for (TreeMap<TimeOfDay, List<TrainingSession>> day : timetable.values()) {
             for (List<TrainingSession> trainings : day.values()) {
                 for (TrainingSession training : trainings) {
                     Coach coach = training.getCoach();
