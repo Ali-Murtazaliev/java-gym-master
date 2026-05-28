@@ -1,6 +1,7 @@
 package ru.yandex.practicum.gym;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -8,6 +9,7 @@ import java.util.*;
 public class TimetableTest {
 
     @Test
+    @DisplayName("Должен вернуть одно занятие за понедельник и пустой список за вторник")
     void testGetTrainingSessionsForDaySingleSession() {
         Timetable timetable = new Timetable();
 
@@ -21,11 +23,11 @@ public class TimetableTest {
         Assertions.assertEquals(1, timetable.getTrainingSessionsForDay(DayOfWeek.MONDAY).size());
         Assertions.assertEquals(0,timetable.getTrainingSessionsForDay(DayOfWeek.TUESDAY).size());
 
-        //Проверить, что за понедельник вернулось одно занятие
-        //Проверить, что за вторник не вернулось занятий
+
     }
 
     @Test
+    @DisplayName("Занятия за четверг должны возвращаться в отсортированном порядке")
     void testGetTrainingSessionsForDayMultipleSessions() {
         Timetable timetable = new Timetable();
 
@@ -63,6 +65,7 @@ public class TimetableTest {
     }
 
     @Test
+    @DisplayName("Должен вернуть занятия по дню недели и времени")
     void testGetTrainingSessionsForDayAndTime() {
         Timetable timetable = new Timetable();
 
@@ -81,6 +84,7 @@ public class TimetableTest {
     }
 
     @Test
+    @DisplayName("Для пустого расписания должен возвращаться пустой список занятий")
     void testEmptyTimetable() {
         Timetable timetable  = new Timetable();
         Assertions.assertTrue(timetable.getTrainingSessionsForDay(DayOfWeek.MONDAY).isEmpty());
@@ -89,6 +93,7 @@ public class TimetableTest {
     }
 
     @Test
+    @DisplayName("Должен корректно обрабатывать несколько занятий в одно время")
     void testMultipleTrainingSessionsAtSameTime() {
         Timetable timetable = new Timetable();
 
@@ -108,10 +113,11 @@ public class TimetableTest {
                 new TimeOfDay(12, 0)).size());
 
 
-        // Проверить случай когда два занятия в одно и тоже время
+        // Проверить случай когда два занятия в одно и то же время
     }
 
     @Test
+    @DisplayName("Занятия должны корректно сортироваться на границах времени")
     void testForBoundaryTime() {
         Timetable timetable = new Timetable();
 
@@ -135,6 +141,7 @@ public class TimetableTest {
     }
 
     @Test
+    @DisplayName("Должен корректно подсчитывать количество тренировок у тренеров")
     void testForLessonsCount() {
         Timetable timetable = new Timetable();
 
@@ -153,6 +160,7 @@ public class TimetableTest {
     }
 
     @Test
+    @DisplayName("Тренеры должны сортироваться по количеству тренировок")
     void testSortCoachesByTrainingCount() {
         Timetable timetable = new Timetable();
 
@@ -178,6 +186,7 @@ public class TimetableTest {
     }
 
     @Test
+    @DisplayName("Для пустого расписания список тренеров должен быть пустым")
     void testForEmptyTimetable() {
         Timetable timetable = new Timetable();
         Assertions.assertTrue(timetable.getCountByCoaches().isEmpty());
